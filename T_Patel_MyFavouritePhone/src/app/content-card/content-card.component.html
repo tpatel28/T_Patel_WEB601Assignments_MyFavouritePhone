@@ -1,0 +1,8 @@
+<div>
+    <div>
+        @for(ContentArray of contentList.ContentArray; track ContentArray.id; let i = $index){
+            <div [innerHTML]="contentList.getHtmlOutputAtIndex(i)">
+            </div>
+        }
+    </div>
+  </div>

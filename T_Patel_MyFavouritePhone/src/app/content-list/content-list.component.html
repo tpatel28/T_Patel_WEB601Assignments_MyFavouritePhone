@@ -1,10 +1,17 @@
-<div *ngFor="let contentItem of contentItems; let isFirst = first" class="content-card" 
-(click) = "displayContentInfo(contentItem)"
-[class.first-item]="isFirst">
-  <img [src]="contentItem.imgURL" class="content-card-image" height="250px" width="200px">
-  <h2>{{ contentItem.title }}</h2>
-  <p><strong>Description:</strong> {{ contentItem.description }}</p>
-  <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
-  <p *ngIf="contentItem.type"><strong>Type: </strong>{{ contentItem.type }}</p>
-  <p *ngIf="contentItem.tags && contentItem.tags.length > 0"><strong>Tags:</strong> {{ contentItem.tags.join(', ') }}</p>
+<input type="text" [(ngModel)]="searchTitle" placeholder="Enter Phone name">
+<button (click)="checkContentExists()">Search for your Phone</button>
+
+<p [ngStyle]="{'color': contentExists ? 'green' : 'red'}">{{ message }}</p>
+
+<div>
+<h1>None</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typeconcluder: ''" [contentItem]="contentItem"></app-content-card>
+</div>
+<div>
+<h1>Android</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typeconcluder: 'Android'" [contentItem]="contentItem"></app-content-card>
+</div>
+<div>
+<h1>IOS</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typeconcluder: 'Ios'" [contentItem]="contentItem"></app-content-card>
 </div>

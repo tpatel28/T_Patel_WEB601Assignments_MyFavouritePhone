@@ -1,8 +1,15 @@
-<!-- <div>
-    <div>
-        @for(ContentArray of contentList.ContentArray; track ContentArray.id; let i = $index){
-            <div [innerHTML]="contentList.getHtmlOutputAtIndex(i)">
-            </div>
-        }
-    </div>
-  </div> -->
+<div class="content-card" [ngClass]="{
+    'android': contentItem.type === 'Android',
+    'ios': contentItem.type === 'Ios',
+    'unspecified': !contentItem.type
+  }">
+  
+      <img [src]="contentItem.imgURL" *ngIf="contentItem.imgURL" alt="{{ contentItem.title }}" class="content-card-image" height="200px" width="150px">
+      <div *ngIf="contentItem.imgURL">
+          <h2>{{ contentItem.title }}</h2>
+          <p><strong>Description:</strong> {{ contentItem.description }}</p>
+          <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+          <p *ngIf="contentItem.type"><strong>Type: </strong>{{ contentItem.type }}</p>
+          <p *ngIf="contentItem.tags && contentItem.tags.length > 0"><strong>Tags:</strong> {{ contentItem.tags.join(', ') }}</p>
+      </div>
+  </div>

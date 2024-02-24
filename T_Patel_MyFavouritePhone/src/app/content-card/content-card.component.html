@@ -3,13 +3,13 @@
     'ios': contentItem.type === 'Ios',
     'unspecified': !contentItem.type
   }">
-  
-      <img [src]="contentItem.imgURL" *ngIf="contentItem.imgURL" alt="{{ contentItem.title }}" class="content-card-image" height="200px" width="150px">
-      <div *ngIf="contentItem.imgURL">
+  <img [src]="contentItem.imgURL" *ngIf="contentItem.imgURL; else defaultImage" alt="{{ contentItem.title }}" class="content-card-image" height="200px" width="150px">
+  <ng-template #defaultImage>
+    <img src="https://www.theme-junkie.com/wp-content/uploads/gaming-fonts-4.jpeg" alt="this is the default image" height="200px" width="250px">
+  </ng-template>
           <h2>{{ contentItem.title }}</h2>
           <p><strong>Description:</strong> {{ contentItem.description }}</p>
           <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
-          <p *ngIf="contentItem.type"><strong>Type: </strong>{{ contentItem.type }}</p>
-          <p *ngIf="contentItem.tags && contentItem.tags.length > 0"><strong>Tags:</strong> {{ contentItem.tags.join(', ') }}</p>
+          <p *ngIf="contentItem.type" appHoverAffect [effect]="'underline'"><strong>Type: </strong>{{ contentItem.type }}</p>
+      <p *ngFor="let tag of contentItem.tags" appHoverAffect><strong>Tags:</strong>{{ tag }}</p>
       </div>
-  </div>

@@ -5,7 +5,7 @@
   }">
   <img [src]="contentItem.imgURL" *ngIf="contentItem.imgURL; else defaultImage" alt="{{ contentItem.title }}" class="content-card-image" height="200px" width="150px">
   <ng-template #defaultImage>
-    <img src="https://www.theme-junkie.com/wp-content/uploads/gaming-fonts-4.jpeg" alt="this is the default image" height="200px" width="250px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MyPhone_logo_%28new%29.svg/2493px-MyPhone_logo_%28new%29.svg.png" alt="this is the default image" height="200px" width="250px">
   </ng-template>
           <h2>{{ contentItem.title }}</h2>
           <p><strong>Description:</strong> {{ contentItem.description }}</p>

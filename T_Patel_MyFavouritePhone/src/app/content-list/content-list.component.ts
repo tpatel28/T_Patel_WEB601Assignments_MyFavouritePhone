@@ -5,11 +5,12 @@ import { ContentCardComponent } from '../content-card/content-card.component';
 import { TypeconcluderPipe } from '../typeconcluder.pipe';
 import { FormsModule } from '@angular/forms';
 import { HoverAffectDirective } from '../hover-affect.directive';
+import { CreateContentComponent } from '../create-content/create-content.component';
 
 @Component({
   selector: 'app-content-list',
   standalone: true,
-  imports: [CommonModule, ContentCardComponent, TypeconcluderPipe, FormsModule,HoverAffectDirective],
+  imports: [CommonModule, ContentCardComponent, TypeconcluderPipe, FormsModule,HoverAffectDirective,CreateContentComponent],
   templateUrl: './content-list.component.html',
   styleUrl: './content-list.component.scss'
 })
@@ -96,5 +97,8 @@ export class ContentListComponent implements OnInit {
         tags: ["Nice", "camera"]
       }
      ];
+  }
+  onContentCreated(newContent: any) {
+    this.contentItems.push({ ...newContent }); 
   }
 }

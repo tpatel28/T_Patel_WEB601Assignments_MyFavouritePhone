@@ -1,4 +1,19 @@
-<input type="text" [(ngModel)]="searchTitle" placeholder="Enter Phone name">
+<div>
+    <input [(ngModel)]="searchTitle" placeholder="Enter Content Title" />
+    <button (click)="checkContentExists()">Search Phone</button>
+    <div [ngStyle]="{'color' : contentExists ? 'green' : 'red'}">
+      {{ message }}
+    </div>
+  </div>
+  
+  <app-create-content (createContent)="onContentCreated($event)"></app-create-content>
+  <div>
+    <div *ngFor="let content of contentItems">
+      <app-content-card [contentItem]="content"></app-content-card>
+    </div>
+  </div>
+
+<!-- <input type="text" [(ngModel)]="searchTitle" placeholder="Enter Phone name">
 <button (click)="checkContentExists()">Search for your Phone</button>
 
 <p [ngStyle]="{'color': contentExists ? 'green' : 'red'}">{{ message }}</p>
@@ -14,4 +29,4 @@
 <div>
 <h1>IOS</h1>
 <app-content-card *ngFor="let contentItem of contentItems | typeconcluder: 'Ios'" [contentItem]="contentItem"></app-content-card>
-</div>
+</div> -->
